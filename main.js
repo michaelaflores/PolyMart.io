@@ -82,6 +82,25 @@ $(function() {
     });
   });
 
+
+    //Github login.
+
+    var ref = new Firebase("https://polymart.firebaseio.com");
+
+    $(function() {
+      $("#githublogin").click(function(){
+
+      ref.authWithOAuthPopup("github", function(error, authData) {
+        if (error) {
+          console.log("Login Failed!", error);
+        } else {
+          console.log("Authenticated successfully with payload:", authData);
+        }
+      });
+    });
+  });
+
+
 	/*
 	*Bind Events to the list item to provide more functionality.
 	*You can extend this function to add more things like a Status button to mark items (for creating something like Trello!)
