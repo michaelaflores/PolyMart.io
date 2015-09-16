@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description">
+        <meta name="author">
+        <title>
+            PolyMart.io
+        </title>
+		<!-- Bootstrap core CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link href="assets/css/main.css" rel="stylesheet" default-stylesheet="true" type="text/css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="//www.powr.io/powr.js" powr-token="4c19406f84" external-type="html"></script>
+        <script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+
+
+    </head>
+    <body style="cursor: auto;">
+        <div id="nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><a id="navi" class="navbar-brand" href>PolyMart.io</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul id="navi" class="nav navbar-nav pull-right">
+                        <li>
+                            <a data-target="#register" href>Signup</a>
+                        </li>
+                        <li>
+                            <a data-target="#login" href>Login</a>
+                        </li>
+                        <li>
+                            <a id="logout" href>Logout</a>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+        <div class="welcome"></div>
+        <div class="container tab hide" id="login">
+            <form class="form-signin" role="form">
+                <h2 class="form-signin-heading">
+                    Login to your account
+                </h2>
+                <hr>
+                <input type="email" class="form-control" placeholder="Email address" required="" autofocus="" id="login-email">
+                <input type="password" class="form-control" placeholder="Password" required="" id="login-password">
+                <button class="btn btn-primary" type="button" id="login-btn">
+                    Login
+                </button>
+                <hr>
+                <div class="status alert alert-info hide"></div>
+            </form>
+        </div>
+
+        <div class="container tab default inline" id="register">
+          <header id="header">
+            <h1>PolyMart.io</h1>
+            <p>Your go-to marketplace for Polymer components and material design templates</p>
+          </header>
+          <div class="social">
+            <p id="space">Sign-up with: </p>
+            <div class="socialline">
+              <a href="#" id="fblogin" class="icon fa-facebook">Facebook</a>
+              <a href="#" id="twitterlogin" class="icon fa-twitter">Twitter</a>
+              <a href="#" id="githublogin" class="icon fa-github">Github</a>
+            </div>
+          </div>
+            <form class="form-signin" role="form" id="trans" action="http://polymart.us11.list-manage2.com/subscribe/post" method="POST">
+
+                <input type="hidden" name="u" value="33c7e4c6b7d5ec19fb04c791f">
+                <input type="hidden" name="id" value="da8b980b03">
+                <input type="text" class="form-control" placeholder="Your Name" required="" autofocus="" id="name">
+                <input type="email" class="form-control" placeholder="Email address" required="" autofocus="" id="email" name="MERGE0">
+                <input type="password" class="form-control" placeholder="Password" required="" id="password">
+                <button class="btn btn-primary" type="button" id="signup-btn">
+                    Sign Me Up!
+                </button>
+            </form>
+          </div>
+
+
+
+
+
+        <div class="container tab hide" id="lists">
+            <div class="status alert alert-info hide"></div><br>
+            <p id="msg">We're working hard to launch PolyMart.io as fast as possible. Are you interested in submitting your own Polymer component or template? Let us know, below :)</p>
+
+            <div class="powr-contact-form" label="1904118"></div>
+
+        </div>
+        <!-- Footer -->
+          <footer id="footer">
+            <ul class="icons">
+              <li><a href="http://www.twitter.com/polymartio" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="http://www.instagram.com/polymart.io" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+              <li><a href="http://www.facebook.com/polymart.io" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            </ul>
+            <ul class="copyright">
+              <li>&copy; PolyMart.io</li>
+            </ul>
+          </footer>
+
+          <div id="counter">
+            <div class="powr-hit-counter" label="1895204"></div>
+          </div>
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="./main.js"></script>
+    </body>
+</html>
