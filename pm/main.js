@@ -38,6 +38,10 @@ $(function() {
 
     //Facebook login
 
+    $(function() {
+      $("#fblogin").click(function(){
+
+
     var chatRef = new Firebase('https://polymart.firebaseio.com');
 
     var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
@@ -47,21 +51,22 @@ $(function() {
       } else if (user) {
         // user authenticated with Firebase
         console.log('user ID: ' + user.uid + ', Provider: ' + user.provider);
+        addUserWelcome(" friend :)");
+        goToTab("#lists");
       } else {
         //user is logged out
         console.log("Not logged in :(");
       }
     });
 
-    $(function() {
-      $("#fblogin").click(function(){
+    auth.login('facebook', {
+      remember: "sessionOnly",
+      scope: 'email,public_profile,user_friends'
+    });
 
-        auth.login('facebook', {
-          rememberMe: true,
-          scope: 'email,public_profile,user_friends'
-        });
     });
   });
+
 
 
     //twitter login
@@ -77,6 +82,8 @@ $(function() {
               console.log("Login Failed!", error);
             } else {
               console.log("Authenticated successfully with payload:", authData);
+              addUserWelcome(" friend :)");
+              return authData.twitter.displayName;
               goToTab("#lists");
             }
       });
@@ -96,11 +103,42 @@ $(function() {
           console.log("Login Failed!", error);
         } else {
           console.log("Authenticated successfully with payload:", authData);
+          addUserWelcome(" friend :)");
+          return authData;
           goToTab("#lists");
         }
       });
     });
   });
+
+  // we would probably save a profile when we register new users on our site
+  // we could also read the profile to see if it's null
+  // here we will just simulate this with an isNewUser boolean
+  var isNewUser = true;
+
+  var ref = new Firebase("https://polymart.firebaseio.com");
+  ref.onAuth(function(authData) {
+    if (authData && isNewUser) {
+      // save the user's profile into the database so we can list users,
+      // use them in Security and Firebase Rules, and show profiles
+      ref.child("users").child(authData.uid).set({
+        provider: authData.provider,
+        name: getName(authData)
+      });
+    }
+  });
+
+  // find a suitable name based on the meta info given by each provider
+  function getName(authData) {
+    switch(authData.provider) {
+       case 'password':
+         return authData.password.email.replace(/@.*/, '');
+       case 'twitter':
+         return authData.twitter.displayName;
+       case 'github':
+         return authData.github.displayName;
+    }
+  }
 
 
 	/*
@@ -250,7 +288,7 @@ $(function() {
 
 	//Adds a welcome message when a user logs in.
     var addUserWelcome = function(user_name) {
-        $(".welcome").html("<div class='alert alert-success'> Welcome <strong>" + " " + user_name + "</strong></div>");
+        $(".welcome").html("<div class='alert alert-success'> Welcome, <strong>" + " " + user_name + "</strong></div>");
     }
 
     //Listen to Auth Changes
@@ -277,6 +315,7 @@ $(function() {
 	//Logout action handler
     $("#logout").on('click', function() {
         firebaseref.unauth();
+        auth.logout();
         userData = null;
         $(".welcome").html('');
         goToTab('#login');
@@ -293,7 +332,8 @@ $(function() {
 		else
 		{
 			console.log("Authenticated successfully with payload:", authData);
-			$("#login-btn").parent().find('.status').html("You are logged in as:" + authData.uid).show();
+			$("#login-btn").parent().find('.status').html("You are logged in").show();
+      goToTab("#lists");
         }
 	}
 

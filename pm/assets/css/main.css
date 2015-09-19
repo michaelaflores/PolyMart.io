@@ -130,6 +130,10 @@
 				padding: 5em 2em 2em 2em;
 			}
 
+			.socialline {
+				font-size: 12px;
+			}
+
 		}
 
 		@media screen and (max-width: 360px) {
@@ -291,8 +295,6 @@
 		font-weight: 400;
 		letter-spacing: -0.01em;
 		line-height: 1.65em;
-
-
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -837,7 +839,7 @@
 
 	textarea {
 		padding: 0.75em 1em;
-    background-color: black !important;
+    background-color: transparent;
 	}
 
 	input[type="checkbox"],
@@ -1205,7 +1207,7 @@
 
 		#counter {
 			position: fixed;
-			left: 0;
+			right: 0;
 			bottom: 0;
 		}
 
@@ -1263,6 +1265,10 @@ input {
   background-color: #01B595;
 }
 
+#login {
+	background-color: transparent !important;
+}
+
 #login-btn {
   background-color: #01B595;
 }
@@ -1293,10 +1299,12 @@ input.selected {
 
 .btn-primary: hover {
 	border: none;
+	background-color: transparent;
 }
 
 .btn-primary: clicked {
 	border: none;
+	background-color: transparent;
 }
 
 .social {
@@ -1305,17 +1313,17 @@ input.selected {
 
 #fblogin {
 	height: 20px !important;
-	padding-left: 35px;
+	padding-left: 3.5%;
 }
 
 #twitterlogin {
 	height: 20px !important;
-	padding-left: 40px;
+	padding-left: 3.5%;
 }
 
 #githublogin {
 	height: 20px !important;
-	padding-left: 40px;
+	padding-left: 3.5%;
 }
 
 

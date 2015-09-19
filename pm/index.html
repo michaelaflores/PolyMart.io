@@ -19,8 +19,6 @@
         <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
 
 
-    </head>
-    <body style="cursor: auto;">
         <div id="nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -49,10 +47,14 @@
         <div class="welcome"></div>
         <div class="container tab hide" id="login">
             <form class="form-signin" role="form">
-                <h2 class="form-signin-heading">
-                    Login to your account
-                </h2>
-                <hr>
+              <br>
+
+              <header id="header">
+
+                    <h1 class="form-signin-heading">PolyMart.io</h1>
+                    <p>Your go-to marketplace for Polymer components and material design templates</p>
+              </header>
+
                 <input type="email" class="form-control" placeholder="Email address" required="" autofocus="" id="login-email">
                 <input type="password" class="form-control" placeholder="Password" required="" id="login-password">
                 <button class="btn btn-primary" type="button" id="login-btn">
@@ -69,12 +71,15 @@
             <p>Your go-to marketplace for Polymer components and material design templates</p>
           </header>
           <div class="social">
-            <p id="space">Sign-up with: </p>
+            <h4 id="space">Sign-up for early access! </h4>
+
             <div class="socialline">
               <a href="#" id="fblogin" class="icon fa-facebook">Facebook</a>
               <a href="#" id="twitterlogin" class="icon fa-twitter">Twitter</a>
               <a href="#" id="githublogin" class="icon fa-github">Github</a>
             </div>
+            <br>
+          
           </div>
             <form class="form-signin" role="form" id="trans" action="http://polymart.us11.list-manage2.com/subscribe/post" method="POST">
 
