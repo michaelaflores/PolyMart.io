@@ -77,6 +77,7 @@ $(function() {
               console.log("Login Failed!", error);
             } else {
               console.log("Authenticated successfully with payload:", authData);
+              goToTab("#lists");
             }
       });
     });
@@ -95,6 +96,7 @@ $(function() {
           console.log("Login Failed!", error);
         } else {
           console.log("Authenticated successfully with payload:", authData);
+          goToTab("#lists");
         }
       });
     });
@@ -341,7 +343,7 @@ $(function() {
                 console.log("Error creating user:", error);
                 $("#signup-btn").parents("#register").find('.status').html("Error creating user:" + error).show();
             } else {
-                console.log("Successfully created user account with uid:", userData.uid);
+                console.log("Successfully created user account");
                 $("#signup-btn").parents("#register").find('.status').html("Successfully created user account with uid:" + userData.uid).show();
                 firebaseref.authWithPassword({
                     email: email,

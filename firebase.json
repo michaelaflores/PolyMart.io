@@ -1,0 +1,9 @@
+{
+  "firebase": "polymart",
+  "public": "pm",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
