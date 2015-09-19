@@ -15,7 +15,7 @@ $(function() {
 
 	//Global Variables for userData and the firebase reference to the list.
     var listRef = null;
-	var userData = null;
+	  var userData = null;
 
 	//timer is used for few animations for the status messages.
 	var timer = null;
@@ -32,40 +32,66 @@ $(function() {
         $(".nav.navbar-nav > li > a[data-target='" + tabname + "']").parent().addClass('active');
         $(".tab").addClass('hide');
         $(".tab" + tabname).removeClass('hide');
+        $(".out").removeClass('hide').addClass('tab');
+
     }
 
 
 
     //Facebook login
 
+    var chatRef = new Firebase('https://polymart.firebaseio.com');
+
     $(function() {
       $("#fblogin").click(function(){
 
-
-    var chatRef = new Firebase('https://polymart.firebaseio.com');
 
     var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
       if (error) {
         //an error occurred while attempting login
         console.log(error);
-      } else if (user) {
+      } else
+
+      if (user) {
         // user authenticated with Firebase
         console.log('user ID: ' + user.uid + ', Provider: ' + user.provider);
-        addUserWelcome(" friend :)");
+        addUserWelcome(" friend!");
         goToTab("#lists");
+        return authData.facebook.displayName;
       } else {
         //user is logged out
-        console.log("Not logged in :(");
+        console.log("Uh oh! Not logged in.");
       }
     });
 
     auth.login('facebook', {
-      remember: "sessionOnly",
-      scope: 'email,public_profile,user_friends'
+      scope: 'email'
     });
 
     });
   });
+
+
+
+    // $(function() {
+    //     $("#fblogin").click(function(){
+    //
+    //       var ref = new Firebase("https://polymart.firebaseio.com");
+    //
+    //         ref.authWithOAuthPopup("facebook", function(error, authData) {
+    //           if (error) {
+    //             console.log("Login Failed!", error);
+    //           } else {
+    //             console.log("Authenticated successfully with payload:", authData);
+    //             goToTab("#lists");
+    //           }
+    //         });
+    //
+    //   });
+    // });
+
+
+
 
 
 
@@ -82,9 +108,9 @@ $(function() {
               console.log("Login Failed!", error);
             } else {
               console.log("Authenticated successfully with payload:", authData);
-              addUserWelcome(" friend :)");
-              return authData.twitter.displayName;
+              addUserWelcome(" friend!");
               goToTab("#lists");
+              return authData.twitter.displayName;
             }
       });
     });
@@ -103,9 +129,9 @@ $(function() {
           console.log("Login Failed!", error);
         } else {
           console.log("Authenticated successfully with payload:", authData);
-          addUserWelcome(" friend :)");
-          return authData;
+          addUserWelcome(" friend!");
           goToTab("#lists");
+          return authData;
         }
       });
     });
@@ -118,12 +144,14 @@ $(function() {
 
   var ref = new Firebase("https://polymart.firebaseio.com");
   ref.onAuth(function(authData) {
+
     if (authData && isNewUser) {
       // save the user's profile into the database so we can list users,
       // use them in Security and Firebase Rules, and show profiles
       ref.child("users").child(authData.uid).set({
         provider: authData.provider,
         name: getName(authData)
+
       });
     }
   });
@@ -137,6 +165,8 @@ $(function() {
          return authData.twitter.displayName;
        case 'github':
          return authData.github.displayName;
+       case 'facebook':
+         return " "
     }
   }
 

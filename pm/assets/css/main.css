@@ -1,4 +1,4 @@
-@import url(font-awesome.min.css);
+@import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 
 /* Reset */
@@ -835,6 +835,7 @@
 	input[type="email"],
 	select {
 		height: 2.75em;
+		width: 50%;
 	}
 
 	textarea {
@@ -1039,12 +1040,28 @@
 			font-size: 1em;
 		}
 
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		select,
+		textarea {
+			width: 50%;
+		}
+
 	}
 
 	@media screen and (max-width: 480px) {
 
 		#header {
 			margin: 0 0 1em 0;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		select,
+		textarea {
+			width: 75%;
 		}
 
 	}
@@ -1065,6 +1082,7 @@
 		#signup-form input[type="email"] {
 			width: 18em;
       background-color: transparent;
+			width: 75%;
 		}
 
 		#signup-form > * {
@@ -1085,6 +1103,14 @@
 				-ms-flex-direction: column;
 				flex-direction: column;
         background-color: transparent;
+			}
+
+			input[type="text"],
+			input[type="email"],
+			input[type="password"],
+			select,
+			textarea {
+				width: 70%;
 			}
 
 				#signup-form input[type="type"],
